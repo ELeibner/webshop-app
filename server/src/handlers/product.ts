@@ -8,12 +8,12 @@ export const getProducts: RequestHandler = async (req, res) => {
 };
 
 export const addProduct: RequestHandler = async (req, res) => {
-    const products = await Product.create({
+    const product = await Product.create({
         name: req.body.name,
         description: req.body.description,
         qty: req.body.qty,
         picture: req.body.picture
     });
 
-    res.status(200).json(products);
+    res.status(200).json(product);
 };
