@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { IProduct } from '../models/Product.model';
 import { useAppDispatch } from '../store/hooks';
 import { addToCart } from '../store/productSlice';
+import { currencyFormat } from '../utils/currency-format';
 
 interface ProductProps extends IProduct {}
 
@@ -20,13 +21,18 @@ export default function Product(item: ProductProps) {
         setAmount((prev) => (isValid(prev + value) ? prev + value : prev));
 
     return (
-        <Card sx={{ maxWidth: 300, minWidth: 200 }}>
+        <Card
+            sx={{
+                maxWidth: 300,
+                minWidth: 200
+            }}
+        >
             <CardActionArea>
                 {!item.picture ? (
                     <Box
                         sx={{
-                            width: '100%',
-                            height: 100,
+                            width: '50%',
+                            height: 2000,
                             alignItems: 'center',
                             justifyContent: 'center',
                             display: 'flex',
@@ -38,7 +44,7 @@ export default function Product(item: ProductProps) {
                 ) : (
                     <CardMedia
                         component="img"
-                        height="140"
+                        height="360"
                         image={item.picture}
                         alt={item.name}
                     />
@@ -52,6 +58,15 @@ export default function Product(item: ProductProps) {
                     {item.description && (
                         <Typography variant="body2" color="text.secondary">
                             {item.description}
+                        </Typography>
+                    )}
+                    {item.price && (
+                        <Typography
+                            variant="body1"
+                            color="text.primary"
+                            textAlign={'right'}
+                        >
+                            {currencyFormat(item.price)}
                         </Typography>
                     )}
                 </CardContent>

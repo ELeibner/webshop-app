@@ -9,18 +9,19 @@ import { useAppDispatch } from '../store/hooks';
 import { removeFromCart } from '../store/productSlice';
 
 import DeleteIcon from '@mui/icons-material/Delete';
+import { currencyFormat } from '../utils/currency-format';
 
 export const Item = (item: IProduct) => {
     const dispatch = useAppDispatch();
 
     return (
-        <Card sx={{ maxWidth: 360, maxHeight: 200, display: 'flex' }}>
+        <Card sx={{ maxWidth: 500, maxHeight: 200, display: 'flex' }}>
             <CardActionArea sx={{ display: 'flex' }}>
                 {!item.picture ? (
                     <Box
                         sx={{
-                            width: '100%',
-                            height: 100,
+                            width: '30%',
+                            height: 60,
                             alignItems: 'center',
                             justifyContent: 'center',
                             display: 'flex',
@@ -32,7 +33,7 @@ export const Item = (item: IProduct) => {
                 ) : (
                     <CardMedia
                         component="img"
-                        height="140"
+                        height="80"
                         image={item.picture}
                         alt={item.name}
                     />
@@ -40,7 +41,7 @@ export const Item = (item: IProduct) => {
                 <CardContent>
                     {item.name && (
                         <Typography gutterBottom variant="h5" component="div">
-                            {item.name}
+                            {`${item.name} (${currencyFormat(item.price)})`}
                         </Typography>
                     )}
                     {item.description && (

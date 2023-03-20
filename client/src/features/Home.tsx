@@ -18,7 +18,7 @@ const Home = () => {
 
     return (
         <Stack
-            direction={{ xs: 'column', sm: 'column' }}
+            direction={{ xs: 'column', sm: 'row' }}
             spacing={{ xs: 1, sm: 4, md: 8 }}
             justifyContent={'center'}
             alignItems={'center'}
