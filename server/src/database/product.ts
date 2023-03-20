@@ -4,9 +4,10 @@ import { model, Schema } from 'mongoose';
 export interface IProduct {
     id: string | number;
     name: string;
-    description?: string;
-    qty?: number;
-    picture?: string;
+    description: string;
+    qty: number;
+    picture: string;
+    price: number;
 }
 
 const productSchema = new Schema<IProduct>({
@@ -14,7 +15,8 @@ const productSchema = new Schema<IProduct>({
     name: String,
     description: String,
     qty: Number,
-    picture: String
+    picture: String,
+    price: Number
 });
 
 export const Product = model<IProduct>('Product', productSchema);

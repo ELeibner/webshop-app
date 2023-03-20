@@ -12,7 +12,8 @@ export const addProduct: RequestHandler = async (req, res) => {
         name: req.body.name,
         description: req.body.description,
         qty: req.body.qty,
-        picture: req.body.picture
+        picture: req.body.picture,
+        price: req.body.price
     });
 
     res.status(200).json(product);
